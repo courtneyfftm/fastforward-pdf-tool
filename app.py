@@ -88,7 +88,7 @@ def classify_document(text, filename):
     
     try:
         message = client.messages.create(
-            model="claude-opus-4-1",
+            model="claude-3-5-sonnet-20241022",
             max_tokens=100,
             messages=[
                 {
@@ -113,7 +113,7 @@ Respond with ONLY the classification name, nothing else."""
             ]
         )
         return message.content[0].text.strip()
-    except:
+    except Exception as e:
         return "Unknown"
 
 def sort_documents(documents_with_types):
@@ -141,7 +141,7 @@ def extract_transaction_data(pdf_path, doc_type):
     
     try:
         message = client.messages.create(
-            model="claude-opus-4-1",
+            model="claude-3-5-sonnet-20241022",
             max_tokens=1000,
             messages=[
                 {
